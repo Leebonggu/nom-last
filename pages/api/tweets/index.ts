@@ -35,7 +35,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             },
           },
         });
-        console.log(newPost);
         return res.status(200).send({ ok: true, post: newPost });
       default:
         return res

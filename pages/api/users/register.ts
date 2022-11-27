@@ -8,7 +8,6 @@ import db from '../../../lib/db';
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { email, password, passwordConfirm } = req.body;
-    console.log(email, password, passwordConfirm);
 
     if (password !== passwordConfirm) {
       return res.status(400).send({ ok: false, message: 'Not Equal Password' });

@@ -1,4 +1,5 @@
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '../../components/atom/Button';
 import FormContainer from '../../components/FormContainer';
@@ -14,6 +15,7 @@ interface WriteTweetResponse {
 }
 
 function WriteTweet() {
+  const router = useRouter();
   const { register, handleSubmit } = useForm<WriteTweetForm>();
 
   const [write, { loading, data }] = useMutation<
@@ -26,7 +28,10 @@ function WriteTweet() {
     write(data);
   };
 
-  console.log(data);
+  useEffect(() => {
+    console.log(data);
+    if (data?.ok) router.push(`/tweets/${data.post.id}`);
+  }, [data]);
 
   return (
     <FormContainer title='New Tweet'>

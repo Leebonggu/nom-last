@@ -37,8 +37,6 @@ const TweetDetail: NextPage = ({ params }: Props) => {
   });
   const [like] = useMutation(`/api/tweets/${params?.id}/like`);
 
-  console.log(data);
-
   if (!data) return <div>loading...</div>;
 
   const {
@@ -53,8 +51,6 @@ const TweetDetail: NextPage = ({ params }: Props) => {
       return prev && { ...prev, isLiked: !prev.isLiked };
     }, false);
   };
-
-  console.log(getRandomBGColor());
 
   return (
     <div className='px-2 py-4 flex flex-col gap-6'>

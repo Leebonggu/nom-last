@@ -11,7 +11,6 @@ function Layout({ children }: Props) {
     <div className='max-w-2xl h-screen mx-auto relative'>
       <Header />
       <div className='bg-neutral-50 pt-16 h-full'>{children}</div>
-      {/* <Nav /> */}
     </div>
   );
 }
