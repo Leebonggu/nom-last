@@ -1,7 +1,5 @@
 import Link from 'next/link';
-import { KeyedMutator } from 'swr';
 import HeartIcon from '../../assets/HeartIcon';
-import { getRandomBGColor } from '../../lib/randomBGColor';
 
 interface Props {
   id: number;
@@ -9,15 +7,15 @@ interface Props {
   post: string;
   createdAt: any;
   likes: number;
-  mutate: KeyedMutator<any>;
+  isLiked: boolean;
 }
 
-function Card({ id, createUser, post, createdAt, likes }: Props) {
+function Card({ id, createUser, post, createdAt, likes, isLiked }: Props) {
   return (
     <div className='w-full  h-40 p-5 shadow-sm border-gray-300 bg-white rounded-lg flex flex-col'>
       <div className='w-full flex-[2] flex items-center gap-4'>
         <div
-          className={`w-12 h-12 ${getRandomBGColor()} rounded-full flex justify-center items-center text-white text-2xl`}
+          className={`w-12 h-12 bg-blue-300 rounded-full flex justify-center items-center text-white text-2xl`}
         >
           <span>{createUser?.at(1)?.toUpperCase()}</span>
         </div>
@@ -31,7 +29,9 @@ function Card({ id, createUser, post, createdAt, likes }: Props) {
       <div className='flex-[1] flex justify-between text-sm text-gray-400'>
         <div className='text-gray-400'>{createdAt}</div>
         <div className='flex gap-2'>
-          <div className='w-5 h-5 text-red-400'>
+          <div
+            className={`w-5 h-5 ${isLiked ? 'text-red-400' : 'text-gray-400'}`}
+          >
             <HeartIcon />
           </div>
           {likes}

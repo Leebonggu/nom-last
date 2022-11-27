@@ -4,7 +4,6 @@ import db from '../../../lib/db';
 import withSession from '../../../lib/withSession';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log(req.session.user);
   try {
     const {
       method,
@@ -23,6 +22,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             },
           },
         });
+
         return res.status(200).send({ ok: true, posts });
       case 'POST':
         const newPost = await db.post.create({
