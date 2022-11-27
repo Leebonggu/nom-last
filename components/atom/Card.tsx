@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import { KeyedMutator } from 'swr';
 import HeartIcon from '../../assets/HeartIcon';
+import { getRandomBGColor } from '../../lib/randomBGColor';
 
 interface Props {
   id: number;
@@ -7,20 +9,8 @@ interface Props {
   post: string;
   createdAt: any;
   likes: number;
+  mutate: KeyedMutator<any>;
 }
-
-const getRandomBGColor = () => {
-  const randomColor = [
-    'bg-blue-300',
-    'bg-green-300',
-    'bg-red-300',
-    'bg-purple-300',
-    'bg-emerald-300',
-  ];
-  const index = Math.floor(Math.random() * randomColor.length);
-
-  return randomColor[index];
-};
 
 function Card({ id, createUser, post, createdAt, likes }: Props) {
   return (

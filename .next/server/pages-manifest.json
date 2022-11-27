@@ -3,7 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
+  "/404": "pages/404.js",
   "/api/tweets": "pages/api/tweets.js",
-  "/api/users/me": "pages/api/users/me.js",
-  "/404": "pages/404.js"
+  "/api/users/me": "pages/api/users/me.js"
 }

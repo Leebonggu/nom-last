@@ -18,7 +18,7 @@ interface TweetsResponse {
 
 const Home: NextPage = () => {
   const { isLoading } = useUser();
-  const { data, error } = useSWR<TweetsResponse>('/api/tweets');
+  const { data, error, mutate } = useSWR<TweetsResponse>('/api/tweets');
 
   if (isLoading || (!data && !error)) return <div>loading...</div>;
 
@@ -34,6 +34,7 @@ const Home: NextPage = () => {
               post={post.post}
               createdAt={String(post.createdAt).split('T')[0]}
               likes={post._count.likes}
+              mutate={mutate}
             />
           ))
         ) : (
