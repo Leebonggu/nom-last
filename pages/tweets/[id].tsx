@@ -35,9 +35,9 @@ const TweetDetail: NextPage = ({ params }: Props) => {
   const { data, mutate } = useSWR<Response>(`/api/tweets/${params?.id}`, {
     revalidateOnFocus: false,
   });
-  const [like, { data: likeData }] = useMutation(
-    `/api/tweets/${params?.id}/like`,
-  );
+  const [like] = useMutation(`/api/tweets/${params?.id}/like`);
+
+  console.log(data);
 
   if (!data) return <div>loading...</div>;
 
@@ -48,11 +48,13 @@ const TweetDetail: NextPage = ({ params }: Props) => {
 
   const handleLike = () => {
     like({});
-    if (!likeData) return;
 
-    mutate((prev) => prev && { ...prev, isLiked: !prev.isLiked }, false);
-    // mutate(`/api/tweets/${params?.id}`);
+    mutate((prev) => {
+      return prev && { ...prev, isLiked: !prev.isLiked };
+    }, false);
   };
+
+  console.log(getRandomBGColor());
 
   return (
     <div className='px-2 py-4 flex flex-col gap-6'>

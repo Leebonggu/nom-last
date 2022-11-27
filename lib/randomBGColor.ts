@@ -5,8 +5,8 @@ const randomColor = [
   'bg-purple-300',
   'bg-emerald-300',
 ];
-export const getRandomBGColor = () => {
-  const index = Math.floor(Math.random() * randomColor.length);
+export const getRandomBGColor = (str = '') => {
+  const index = Math.floor(Math.random() * str.length * randomColor.length);
 
   return randomColor[index];
 };
