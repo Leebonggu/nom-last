@@ -34,7 +34,8 @@ const Login: NextPage = () => {
     if (data?.ok) {
       router.push('/');
     }
-  });
+  }, [data, router]);
+
   return (
     <FormContainer
       title='로그인'

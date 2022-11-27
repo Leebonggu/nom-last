@@ -22,7 +22,6 @@ function WriteTweet() {
   >('/api/tweets');
 
   const onValid = (data: WriteTweetForm) => {
-    console.log(data);
     if (loading) return;
     write(data);
   };
